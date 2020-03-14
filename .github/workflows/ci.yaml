@@ -1,0 +1,39 @@
+name: CI
+
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: "Checkout Master Branch"
+        uses: actions/checkout@v2
+        
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.6
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          host: 'windows'
+          target: 'desktop'
+          install-deps: 'true'
+          modules: 'qtcharts qtwebengine'
+        
+      - name: Setup npm
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Setup 7zip
+        uses: edgarrc/action-7zip@v1.0.4
+
+      - name: Setup QT IFW
+        run: |
+          curl http://qt.mirror.constant.com/online/qtsdkrepository/windows_x86/desktop/tools_ifw/qt.tools.ifw.32/3.2.2ifw-win-x86.7z --output QTIFW.7z
+          7z x QTIFW.7z -oIFW bin
+        shell: cmd
+        
+     
