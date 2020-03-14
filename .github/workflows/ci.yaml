@@ -15,26 +15,16 @@ jobs:
         with:
           python-version: 3.6
 
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-        with:
-          host: 'windows'
-          target: 'desktop'
-          install-deps: 'true'
-          modules: 'qtcharts qtwebengine'
-        
-      - name: Setup npm
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-
-      - name: Setup 7zip
-        uses: DuckSoft/extract-7z-action@v1.0
-
-      - name: Setup QT IFW
+      - name: Install Qt IFW
         run: |
-          curl http://qt.mirror.constant.com/online/qtsdkrepository/windows_x86/desktop/tools_ifw/qt.tools.ifw.32/3.2.2ifw-win-x86.7z --output QTIFW.7z
-          7z x QTIFW.7z -oIFW bin
+          pip install aqtinstall
+          aqt tool windows tools_ifw 3.2.2 qt.tools.ifw.32
+
+      - name: run QT IFW
+        run: |
+          cd src/RhinoPlugin
+          ..\..\Tools\QtInstallerFramework\3.2\bin\binarycreator.exe -c config\config.xml -p packages YourInstaller.exe
+          dir
         shell: cmd
         
      
