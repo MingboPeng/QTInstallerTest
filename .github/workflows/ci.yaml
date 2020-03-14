@@ -15,9 +15,19 @@ jobs:
         with:
           python-version: 3.6
 
-      - name: Install Qt IFW
+      - name: Install aqtinstall
         run: |
           pip install aqtinstall
-        
+
+      - name: Install Qt IFW
+        run: |
+          python -m aqt tool windows tools_ifw 3.2.2 qt.tools.ifw.32
+
+      - name: run QT IFW
+        run: |
+          cd src/RhinoPlugin
+          ..\..\Tools\QtInstallerFramework\3.2\bin\binarycreator.exe -c config\config.xml -p packages YourInstaller.exe
+          dir
+        shell: cmd
         
      
