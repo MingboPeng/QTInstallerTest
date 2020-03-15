@@ -2,3 +2,5 @@ Tools
 *Installer.exe*
 aqtinstall.log
 *.whl
+pkg
+Release

@@ -1,6 +1,7 @@
 C:\Users\mingo\Downloads\3.2.2ifw-win-x86\Tools\QtInstallerFramework\3.2\bin\binarycreator.exe -c D:\Dev\LadybugToolsInstaller\src\RhinoPlugin\config\config.xml -p packages YourInstaller.exe
 
 ..\..\bin\binarycreator.exe -c config\config.xml -p packages YourInstaller.exe
+
 cd src\RhinoPlugin
 ..\..\Tools\QtInstallerFramework\3.2\bin\binarycreator.exe -c config\config.xml -p packages YourInstaller.exe
 

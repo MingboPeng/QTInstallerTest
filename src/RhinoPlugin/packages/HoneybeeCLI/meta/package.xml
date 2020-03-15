@@ -6,4 +6,5 @@
     <ReleaseDate>2014-08-25</ReleaseDate>
     <SortingPriority>100</SortingPriority>
     <ForcedInstallation>true</ForcedInstallation>
+    <Script>installCLI.js</Script>
 </Package>

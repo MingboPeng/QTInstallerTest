@@ -10,7 +10,9 @@ Controller.prototype.IntroductionPageCallback = function()
 
         var ep ="C:\\EnergyPlusV9-2-0\\EP-Launch.exe";
         pip = "pip.exe install click";
-        var res = installer.execute("pip.exe", ["install","honeybee-energy[cli]","-U"]);
+        //var res = installer.execute("pip.exe", ["install","honeybee-energy[cli]","-U"]);
+        var res = installer.execute("pip.exe", ["install","-r","requirements.txt","--no-index","--find-links","honeybeePackages"]);
+        //var res = installer.execute("notepad", ["aa.txt"]);
         //var res = component.addElevatedOperation("Execute", "{0}", )
         widget.MessageLabel.setText(res); // set the welcome text
     }

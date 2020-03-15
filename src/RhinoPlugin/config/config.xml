@@ -5,6 +5,5 @@
     <Title>Your application Installer</Title>
     <Publisher>Your vendor</Publisher>
     <StartMenuDir>Super App</StartMenuDir>
-    <TargetDir>@HomeDir@/InstallationDirectory</TargetDir>
-    <ControlScript>controller.js</ControlScript>
+    <TargetDir>@HomeDir@/LadybugTools/Rhino</TargetDir>
 </Installer>
