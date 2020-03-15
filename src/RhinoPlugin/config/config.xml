@@ -6,4 +6,5 @@
     <Publisher>Your vendor</Publisher>
     <StartMenuDir>Super App</StartMenuDir>
     <TargetDir>@HomeDir@/InstallationDirectory</TargetDir>
+    <ControlScript>controller.js</ControlScript>
 </Installer>

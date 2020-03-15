@@ -28,10 +28,27 @@
 
 function Component()
 {
-    // constructor
-    component.loaded.connect(this, Component.prototype.loaded);
-    if (!installer.addWizardPage(component, "Page", QInstaller.TargetDirectory))
-        console.log("Could not add the dynamic page.");
+    pipInstall();
+    // // constructor
+    // component.loaded.connect(this, Component.prototype.loaded);
+    // if (!installer.addWizardPage(component, "Page", QInstaller.TargetDirectory))
+    //     console.log("Could not add the dynamic page.");
+}
+
+function pipInstall()
+{
+    var python = "C:\\Users\\mingo\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe";
+    var arg = "import os; os.mkdir('aa')";
+    arg = "install honeybee-energy[cli] -U";
+    var ep ="C:\\EnergyPlusV9-2-0\\EP-Launch.exe";
+    var pip = "C:\\Users\\mingo\\AppData\\Local\\Programs\\Python\\Python38-32\\Scripts\\pip.exe install click";
+    pip = "pip.exe install click";
+    //var res  =installer.performOperation("Execute", [pip]);
+    //var res = installer.execute(ep, []);
+    var res = installer.execute(pip);
+    component.addOperation("Execute", pip);
+    QMessageBox.information("quit.question", "Installer", res, QMessageBox.Yes | QMessageBox.No);
+
 }
 
 Component.prototype.isDefault = function()
@@ -64,6 +81,32 @@ Component.prototype.dynamicPageEntered = function ()
     var pageWidget = gui.pageWidgetByObjectName("DynamicPage");
     if (pageWidget != null) {
         console.log("Setting the widgets label text.")
-        pageWidget.m_pageLabel.text = "This is a dynamically created page.";
+        //system type
+        var info = "OS: " + systemInfo.prettyProductName;
+        //get user dir
+        info += "\n\r";
+        info += "HomeDir: " + installer.value("HomeDir")
+        //check python path
+        var paths = installer.environmentVariable("Path").split(";");
+        var pythonPath = "";
+        paths.forEach(p => {
+            if(p.includes("Python") && !p.includes("Scripts")){
+                pythonPath += p;
+            }
+        });
+
+        info += "\n\r";
+        info += pythonPath;
+
+       
+        info += "\n\r";
+        info += res;
+        pageWidget.m_pageLabel.text = info;
+
+        
+       
+        //QMessageBox.information("quit.question", "Installer", res,QMessageBox.Yes | QMessageBox.No);
+
+
     }
 }

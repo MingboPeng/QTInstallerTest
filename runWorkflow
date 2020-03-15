@@ -1,0 +1,26 @@
+C:\Users\mingo\Downloads\3.2.2ifw-win-x86\Tools\QtInstallerFramework\3.2\bin\binarycreator.exe -c D:\Dev\LadybugToolsInstaller\src\RhinoPlugin\config\config.xml -p packages YourInstaller.exe
+
+..\..\bin\binarycreator.exe -c config\config.xml -p packages YourInstaller.exe
+cd src\RhinoPlugin
+..\..\Tools\QtInstallerFramework\3.2\bin\binarycreator.exe -c config\config.xml -p packages YourInstaller.exe
+
+
+honeybee-energy[cli]
+pip install honeybee-energy[cli] -U
+pip uninstall honeybee-energy[cli]
+pip show click
+
+honeybee-standards
+pip install honeybee-standards -t C:\Users\[USERNAME]\honeybee
+pip install honeybee-energy-standards -t C:\Users\[USERNAME]\honeybee
+
+honeybee to OpenStudio measure
+https://github.com/ladybug-tools-in2/energy-model-measure/releases
+
+HoneybeeRhinoPlugin
+
+
+CI workflow:
+
+Download pip packages, get versions
+add all to HoneybeeCli component
